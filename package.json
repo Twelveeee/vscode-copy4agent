@@ -1,0 +1,189 @@
+{
+  "name": "copy4agent",
+  "displayName": "CopyForAgent",
+  "description": "%extension.description%",
+  "version": "0.2.0",
+  "publisher": "Twelveeee",
+  "license": "MIT",
+  "icon": "resources/icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Twelveeee/vscode-copy4agent.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Twelveeee/vscode-copy4agent/issues"
+  },
+  "homepage": "https://github.com/Twelveeee/vscode-copy4agent#readme",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other",
+    "AI"
+  ],
+  "keywords": [
+    "copy",
+    "reference",
+    "agent",
+    "claude code",
+    "codex",
+    "cursor",
+    "line numbers"
+  ],
+  "main": "./out/extension.js",
+  "l10n": "./l10n",
+  "contributes": {
+    "commands": [
+      {
+        "command": "copy4agent.copy",
+        "title": "%command.copy.title%",
+        "category": "CopyForAgent"
+      },
+      {
+        "command": "copy4agent.copyAs.atPath",
+        "title": "%config.template.atPath.label%",
+        "category": "CopyForAgent"
+      },
+      {
+        "command": "copy4agent.copyAs.atPathWithCode",
+        "title": "%config.template.atPathWithCode.label%",
+        "category": "CopyForAgent"
+      },
+      {
+        "command": "copy4agent.copyAs.atPathWithFencedCode",
+        "title": "%config.template.atPathWithFencedCode.label%",
+        "category": "CopyForAgent"
+      },
+      {
+        "command": "copy4agent.copyAs.atPathHashL",
+        "title": "%config.template.atPathHashL.label%",
+        "category": "CopyForAgent"
+      },
+      {
+        "command": "copy4agent.copyAs.plainPath",
+        "title": "%config.template.plainPath.label%",
+        "category": "CopyForAgent"
+      }
+    ],
+    "menus": {
+      "commandPalette": [
+        {
+          "command": "copy4agent.copy",
+          "when": "false"
+        },
+        {
+          "command": "copy4agent.copyAs.atPath",
+          "when": "false"
+        },
+        {
+          "command": "copy4agent.copyAs.atPathWithCode",
+          "when": "false"
+        },
+        {
+          "command": "copy4agent.copyAs.atPathWithFencedCode",
+          "when": "false"
+        },
+        {
+          "command": "copy4agent.copyAs.atPathHashL",
+          "when": "false"
+        },
+        {
+          "command": "copy4agent.copyAs.plainPath",
+          "when": "false"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "copy4agent.copy",
+          "when": "resourceScheme == file",
+          "group": "9_cutcopypaste@90"
+        },
+        {
+          "submenu": "copy4agent.copyWithTemplate",
+          "when": "resourceScheme == file && config.copy4agent.contextMenu.showCopyWithTemplate",
+          "group": "9_cutcopypaste@91"
+        }
+      ],
+      "copy4agent.copyWithTemplate": [
+        {
+          "command": "copy4agent.copyAs.atPath",
+          "group": "navigation@0"
+        },
+        {
+          "command": "copy4agent.copyAs.atPathWithCode",
+          "group": "navigation@1"
+        },
+        {
+          "command": "copy4agent.copyAs.atPathWithFencedCode",
+          "group": "navigation@2"
+        },
+        {
+          "command": "copy4agent.copyAs.atPathHashL",
+          "group": "navigation@3"
+        },
+        {
+          "command": "copy4agent.copyAs.plainPath",
+          "group": "navigation@4"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "CopyForAgent",
+      "properties": {
+        "copy4agent.template": {
+          "type": "string",
+          "markdownDescription": "%config.template.description%",
+          "enum": [
+            "atPath",
+            "atPathWithCode",
+            "atPathWithFencedCode",
+            "atPathHashL",
+            "plainPath"
+          ],
+          "enumItemLabels": [
+            "%config.template.atPath.label%",
+            "%config.template.atPathWithCode.label%",
+            "%config.template.atPathWithFencedCode.label%",
+            "%config.template.atPathHashL.label%",
+            "%config.template.plainPath.label%"
+          ],
+          "markdownEnumDescriptions": [
+            "%config.template.atPath.description%",
+            "%config.template.atPathWithCode.description%",
+            "%config.template.atPathWithFencedCode.description%",
+            "%config.template.atPathHashL.description%",
+            "%config.template.plainPath.description%"
+          ],
+          "default": "atPath",
+          "order": 0
+        },
+        "copy4agent.contextMenu.showCopyWithTemplate": {
+          "type": "boolean",
+          "default": true,
+          "markdownDescription": "%config.contextMenu.showCopyWithTemplate.description%",
+          "order": 1
+        }
+      }
+    },
+    "submenus": [
+      {
+        "id": "copy4agent.copyWithTemplate",
+        "label": "%submenu.copyWithTemplate.label%"
+      }
+    ]
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "test": "npm run compile && node --test \"out/test/**/*.test.js\"",
+    "icon": "rsvg-convert -w 256 -h 256 resources/icon.svg -o resources/icon.png",
+    "package": "vsce package",
+    "vscode:prepublish": "npm run compile"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/vscode": "~1.85.0",
+    "@vscode/vsce": "^4.1.0",
+    "typescript": "^5.9.3"
+  }
+}

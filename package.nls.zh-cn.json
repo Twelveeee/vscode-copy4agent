@@ -1,0 +1,17 @@
+{
+  "extension.description": "将选中的行复制为 @文件:行号 引用（可附带代码），直接粘贴给 Claude Code、Codex、Cursor 等 AI Agent。",
+  "command.copy.title": "复制给 Agent",
+  "config.template.description": "编辑器右键菜单中 **复制给 Agent** 使用的模板。**复制给 Agent（选择模板）** 子菜单可临时用其他模板复制一次，不会修改此设置。\n\n默认未绑定快捷键。可为 **复制给 Agent** 或任一模板[设置快捷键](command:workbench.action.openGlobalKeybindings?%5B%22copy4agent.%22%5D)。",
+  "config.template.atPath.label": "@ 引用",
+  "config.template.atPathWithCode.label": "@ 引用 + 代码",
+  "config.template.atPathWithFencedCode.label": "@ 引用 + 代码块",
+  "config.template.atPathHashL.label": "@ 引用（#L 风格）",
+  "config.template.plainPath.label": "纯路径",
+  "config.template.atPath.description": "`@src/app.py:10-30`\n\n仅包含路径和行号，由 Agent 自行从磁盘读取内容。适用于 Claude Code、Codex、Cursor 以及大多数支持 `@` 文件引用的 Agent。推荐。",
+  "config.template.atPathWithCode.description": "`@src/app.py:10-30`，下一行起原样附上选中的代码。\n\n适合终端 Agent（Claude Code、Codex、DSH 等），需要把代码片段原文带进对话时使用。",
+  "config.template.atPathWithFencedCode.description": "`@src/app.py:10-30`，随后用带语言标记的 Markdown 代码块附上选中的代码。\n\n适合会渲染 Markdown 的聊天界面（Cursor 聊天、网页版对话等）。",
+  "config.template.atPathHashL.description": "`@src/app.py#L10-30`\n\n与 Claude Code 自带 IDE 集成插入的文件引用格式一致。",
+  "config.template.plainPath.description": "`src/app.py:10-30`\n\n不带 `@` 前缀。适用于输入 `@` 会弹出文件选择器、或不识别 `@` 的 Agent / 输入框。在 VS Code 终端中也可 Cmd/Ctrl+点击跳转。",
+  "submenu.copyWithTemplate.label": "复制给 Agent（选择模板）",
+  "config.contextMenu.showCopyWithTemplate.description": "在编辑器右键菜单中显示 **复制给 Agent（选择模板）** 子菜单。"
+}

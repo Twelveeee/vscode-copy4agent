@@ -1,0 +1,44 @@
+name: Release
+
+# Publishing a GitHub release (not a pre-release) whose tag is v<version>
+# publishes that version to the VS Code Marketplace and attaches the .vsix
+# to the release. Authenticates with Marketplace Trusted Publishing (GitHub
+# OIDC), so no token secret is needed; the publisher must have a Trusted
+# Publishing policy for this repository and workflow file.
+on:
+  release:
+    types: [published]
+
+jobs:
+  publish:
+    if: ${{ !github.event.release.prerelease }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # upload the .vsix to the release
+      id-token: write # OIDC token for Marketplace Trusted Publishing
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm test
+
+      - name: Check tag matches package.json version
+        run: |
+          version="$(node -p "require('./package.json').version")"
+          if [ "${GITHUB_REF_NAME}" != "v${version}" ]; then
+            echo "::error::Release tag ${GITHUB_REF_NAME} does not match package.json version v${version}"
+            exit 1
+          fi
+
+      - run: npx vsce package -o copy4agent.vsix
+
+      - name: Publish to the Marketplace
+        run: npx vsce publish --oidc --packagePath copy4agent.vsix
+
+      - name: Attach .vsix to the release
+        run: gh release upload "${GITHUB_REF_NAME}" copy4agent.vsix --clobber
+        env:
+          GH_TOKEN: ${{ github.token }}

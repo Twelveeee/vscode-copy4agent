@@ -1,0 +1,6 @@
+{
+  "Unknown template \"{0}\" in settings. Using the default template instead.": "Unknown template \"{0}\" in settings. Using the default template instead.",
+  "Open a file in the editor first.": "Open a file in the editor first.",
+  "CopyForAgent only works with files saved on disk.": "CopyForAgent only works with files saved on disk.",
+  "Copied for agent: {0}": "Copied for agent: {0}"
+}

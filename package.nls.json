@@ -1,0 +1,17 @@
+{
+  "extension.description": "Copy the selected lines as an @file:line reference, optionally with the code, ready to paste into Claude Code, Codex, Cursor and other AI agents.",
+  "command.copy.title": "Copy for Agent",
+  "config.template.description": "Template used by **Copy for Agent** in the editor context menu. The **Copy for Agent with Template** submenu copies with any other template once, without changing this setting.\n\nNo keyboard shortcuts are bound by default. [Set keyboard shortcuts](command:workbench.action.openGlobalKeybindings?%5B%22copy4agent.%22%5D) for **Copy for Agent** or for any single template.",
+  "config.template.atPath.label": "@ reference",
+  "config.template.atPathWithCode.label": "@ reference + code",
+  "config.template.atPathWithFencedCode.label": "@ reference + fenced code",
+  "config.template.atPathHashL.label": "@ reference, #L style",
+  "config.template.plainPath.label": "Plain path",
+  "config.template.atPath.description": "`@src/app.py:10-30`\n\nPath and line numbers only; the agent reads the lines from disk itself. Works with Claude Code, Codex, Cursor and most agents that understand `@` file mentions. Recommended.",
+  "config.template.atPathWithCode.description": "`@src/app.py:10-30` followed by the selected code as-is on the next lines.\n\nFor terminal agents (Claude Code, Codex, DSH…) when you want the exact snippet in the conversation.",
+  "config.template.atPathWithFencedCode.description": "`@src/app.py:10-30` followed by the selected code in a Markdown fenced block with a language tag.\n\nFor chat UIs that render Markdown (Cursor chat, web chats).",
+  "config.template.atPathHashL.description": "`@src/app.py#L10-30`\n\nThe format Claude Code's own IDE integration inserts for file references.",
+  "config.template.plainPath.description": "`src/app.py:10-30`\n\nNo `@` prefix. For agents or input boxes where `@` opens a file picker or isn't understood. Also Cmd/Ctrl-clickable in the VS Code terminal.",
+  "submenu.copyWithTemplate.label": "Copy for Agent with Template",
+  "config.contextMenu.showCopyWithTemplate.description": "Show the **Copy for Agent with Template** submenu in the editor context menu."
+}

@@ -1,0 +1,6 @@
+{
+  "Unknown template \"{0}\" in settings. Using the default template instead.": "設定中的範本「{0}」無效，已改用預設範本。",
+  "Open a file in the editor first.": "請先在編輯器中開啟一個檔案。",
+  "CopyForAgent only works with files saved on disk.": "CopyForAgent 僅支援已儲存到磁碟的本機檔案。",
+  "Copied for agent: {0}": "已複製給 Agent：{0}"
+}

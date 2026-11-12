@@ -1,0 +1,17 @@
+{
+  "extension.description": "將選取的行複製為 @檔案:行號 參照（可附帶程式碼），直接貼給 Claude Code、Codex、Cursor 等 AI Agent。",
+  "command.copy.title": "複製給 Agent",
+  "config.template.description": "編輯器右鍵選單中 **複製給 Agent** 使用的範本。**複製給 Agent（選擇範本）** 子選單可臨時以其他範本複製一次，不會修改此設定。\n\n預設未綁定快捷鍵。可為 **複製給 Agent** 或任一範本[設定快捷鍵](command:workbench.action.openGlobalKeybindings?%5B%22copy4agent.%22%5D)。",
+  "config.template.atPath.label": "@ 參照",
+  "config.template.atPathWithCode.label": "@ 參照 + 程式碼",
+  "config.template.atPathWithFencedCode.label": "@ 參照 + 程式碼區塊",
+  "config.template.atPathHashL.label": "@ 參照（#L 風格）",
+  "config.template.plainPath.label": "純路徑",
+  "config.template.atPath.description": "`@src/app.py:10-30`\n\n僅包含路徑與行號，由 Agent 自行從磁碟讀取內容。適用於 Claude Code、Codex、Cursor 以及大多數支援 `@` 檔案參照的 Agent。推薦。",
+  "config.template.atPathWithCode.description": "`@src/app.py:10-30`，下一行起原樣附上選取的程式碼。\n\n適合終端機 Agent（Claude Code、Codex、DSH 等），需要把程式碼片段原文帶進對話時使用。",
+  "config.template.atPathWithFencedCode.description": "`@src/app.py:10-30`，隨後以帶語言標記的 Markdown 程式碼區塊附上選取的程式碼。\n\n適合會渲染 Markdown 的聊天介面（Cursor 聊天、網頁版對話等）。",
+  "config.template.atPathHashL.description": "`@src/app.py#L10-30`\n\n與 Claude Code 內建 IDE 整合插入的檔案參照格式一致。",
+  "config.template.plainPath.description": "`src/app.py:10-30`\n\n不帶 `@` 前綴。適用於輸入 `@` 會彈出檔案選擇器、或不識別 `@` 的 Agent / 輸入框。在 VS Code 終端機中也可 Cmd/Ctrl+點擊跳轉。",
+  "submenu.copyWithTemplate.label": "複製給 Agent（選擇範本）",
+  "config.contextMenu.showCopyWithTemplate.description": "在編輯器右鍵選單中顯示 **複製給 Agent（選擇範本）** 子選單。"
+}
